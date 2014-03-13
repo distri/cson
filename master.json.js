@@ -6,16 +6,16 @@ window["distri/cson:master"]({
       "content": "The MIT License (MIT)\n\nCopyright (c) 2014 distri\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
       "type": "blob"
     },
+    "README.coffee.md": {
+      "path": "README.coffee.md",
+      "mode": "100644",
+      "content": "CSON\n====\n\nCoffeeScript Object Notation implemented in the hackiest way.\n\nOne downside is that it currently depends on the CoffeeScript compiler when it\nshould be a simple parser of its own.\n\n    module.exports =\n      parse: (source) ->\n        Function(\"return #{CoffeeScript.compile(source, bare: true)}\")()\n\nThis really needs to be improved. To do it correctly we'd need to detect\nobject/array values and indent while moving them to separate lines. Single\nvalues would exist without newlines or indentation. CSON.stringify would be\ncalled recursively.\n\nThe current hack of using JSON works because JSON is valid CSON.\n\nTODO: Escape keys that need it.\n\n      stringify: (object) ->\n        representation = JSON.parse(JSON.stringify(obj))\n\n        Object.keys(representation).map (key) ->\n          value = representation[key]\n          \"#{key}: #{JSON.stringify(value)}\"\n        .join(\"\\n\")\n",
+      "type": "blob"
+    },
     "pixie.cson": {
       "path": "pixie.cson",
       "mode": "100644",
       "content": "entryPoint: \"README\"\nversion: \"0.1.0\"\nremoteDependencies: [\n  \"https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.6.3/coffee-script.min.js\"\n]\n",
-      "type": "blob"
-    },
-    "README.coffee.md": {
-      "path": "README.coffee.md",
-      "mode": "100644",
-      "content": "CSON\n====\n\nCoffeeScript Object Notation implemented in the hackiest way.\n\nOne downside is that it currently depends on the CoffeeScript compiler when it \nshould be a simple parser of its own.\n\n    module.exports =\n      parse: (source) ->\n        Function(\"return #{CoffeeScript.compile(source, bare: true)}\")()\n\nThis really needs to be improved. To do it correctly we'd need to detect\nobject/array values and indent while moving them to separate lines. Single\nvalues would exist without newlines or indentation. CSON.stringify would be\ncalled recursively.\n\nThe current hack of using JSON works because JSON is valid CSON.\n\nTODO: Escape keys that need it.\n\n      stringify: (object) ->\n        representation = JSON.parse(JSON.stringify(obj))\n\n        Object.keys(representation).map (key) ->\n          value = representation[key]\n          \"#{key}: #{JSON.stringify(value)}\"\n        .join(\"\\n\")\n",
       "type": "blob"
     },
     "test/cson.coffee": {
@@ -26,14 +26,14 @@ window["distri/cson:master"]({
     }
   },
   "distribution": {
-    "pixie": {
-      "path": "pixie",
-      "content": "module.exports = {\"entryPoint\":\"README\",\"version\":\"0.1.0\",\"remoteDependencies\":[\"https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.6.3/coffee-script.min.js\"]};",
-      "type": "blob"
-    },
     "README": {
       "path": "README",
       "content": "(function() {\n  module.exports = {\n    parse: function(source) {\n      return Function(\"return \" + (CoffeeScript.compile(source, {\n        bare: true\n      })))();\n    },\n    stringify: function(object) {\n      var representation;\n      representation = JSON.parse(JSON.stringify(obj));\n      return Object.keys(representation).map(function(key) {\n        var value;\n        value = representation[key];\n        return \"\" + key + \": \" + (JSON.stringify(value));\n      }).join(\"\\n\");\n    }\n  };\n\n}).call(this);\n\n//# sourceURL=README.coffee",
+      "type": "blob"
+    },
+    "pixie": {
+      "path": "pixie",
+      "content": "module.exports = {\"entryPoint\":\"README\",\"version\":\"0.1.0\",\"remoteDependencies\":[\"https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.6.3/coffee-script.min.js\"]};",
       "type": "blob"
     },
     "test/cson": {
@@ -57,8 +57,8 @@ window["distri/cson:master"]({
     "owner": {
       "login": "distri",
       "id": 6005125,
-      "avatar_url": "https://identicons.github.com/f90c81ffc1498e260c820082f2e7ca5f.png",
-      "gravatar_id": null,
+      "avatar_url": "https://gravatar.com/avatar/192f3f168409e79c42107f081139d9f3?d=https%3A%2F%2Fidenticons.github.com%2Ff90c81ffc1498e260c820082f2e7ca5f.png&r=x",
+      "gravatar_id": "192f3f168409e79c42107f081139d9f3",
       "url": "https://api.github.com/users/distri",
       "html_url": "https://github.com/distri",
       "followers_url": "https://api.github.com/users/distri/followers",
@@ -114,17 +114,17 @@ window["distri/cson:master"]({
     "labels_url": "https://api.github.com/repos/distri/cson/labels{/name}",
     "releases_url": "https://api.github.com/repos/distri/cson/releases{/id}",
     "created_at": "2014-02-08T21:52:30Z",
-    "updated_at": "2014-02-08T21:52:30Z",
-    "pushed_at": "2014-02-08T21:52:30Z",
+    "updated_at": "2014-02-09T19:10:07Z",
+    "pushed_at": "2014-02-09T19:10:07Z",
     "git_url": "git://github.com/distri/cson.git",
     "ssh_url": "git@github.com:distri/cson.git",
     "clone_url": "https://github.com/distri/cson.git",
     "svn_url": "https://github.com/distri/cson",
     "homepage": null,
-    "size": 0,
+    "size": 132,
     "stargazers_count": 0,
     "watchers_count": 0,
-    "language": null,
+    "language": "CoffeeScript",
     "has_issues": true,
     "has_downloads": true,
     "has_wiki": true,
@@ -135,7 +135,6 @@ window["distri/cson:master"]({
     "open_issues": 0,
     "watchers": 0,
     "default_branch": "master",
-    "master_branch": "master",
     "permissions": {
       "admin": true,
       "push": true,
@@ -144,8 +143,8 @@ window["distri/cson:master"]({
     "organization": {
       "login": "distri",
       "id": 6005125,
-      "avatar_url": "https://identicons.github.com/f90c81ffc1498e260c820082f2e7ca5f.png",
-      "gravatar_id": null,
+      "avatar_url": "https://gravatar.com/avatar/192f3f168409e79c42107f081139d9f3?d=https%3A%2F%2Fidenticons.github.com%2Ff90c81ffc1498e260c820082f2e7ca5f.png&r=x",
+      "gravatar_id": "192f3f168409e79c42107f081139d9f3",
       "url": "https://api.github.com/users/distri",
       "html_url": "https://github.com/distri",
       "followers_url": "https://api.github.com/users/distri/followers",
@@ -163,7 +162,7 @@ window["distri/cson:master"]({
     "network_count": 0,
     "subscribers_count": 2,
     "branch": "master",
-    "defaultBranch": "master"
+    "publishBranch": "gh-pages"
   },
   "dependencies": {}
 });
