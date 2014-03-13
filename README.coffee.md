@@ -3,7 +3,7 @@ CSON
 
 CoffeeScript Object Notation implemented in the hackiest way.
 
-One downside is that it currently depends on the CoffeeScript compiler when it 
+One downside is that it currently depends on the CoffeeScript compiler when it
 should be a simple parser of its own.
 
     module.exports =
